@@ -19,4 +19,8 @@ public class Word extends JButton {
     public void setMatch(boolean match) {
         this.match = match;
     }
+
+    public void showText() {
+        this.setText(word);
+    }
 }
