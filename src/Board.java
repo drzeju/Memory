@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -20,6 +21,7 @@ public class Board extends JFrame {
     long start;
     long end;
     int counter = 0;
+    String name;
 
 
 
@@ -63,6 +65,8 @@ public class Board extends JFrame {
             word2.setMatch(true);
             if (this.isWon()) {
                 end = System.currentTimeMillis() / 1000;
+                name = JOptionPane.showInputDialog("Please enter your name:");
+                saveScore();
                 String msg = String.format("You have won! \nIt took you %d tries and %d sec. \nRestart game?",counter, end - start);
                 int confirmDialog = JOptionPane.showConfirmDialog(this, msg, "Restart", JOptionPane.YES_NO_OPTION);
                 if (confirmDialog == JOptionPane.YES_OPTION) {
@@ -189,5 +193,26 @@ public class Board extends JFrame {
         frame.repaint();
         counter = 0;
         chooseDifficulty();
+    }
+
+    public void saveScore() {
+        File leaderBoard = new File("src/resources/LeaderBoard.txt");
+
+        String title = "name | date | guessing_time | guessing_tries |";
+
+        String score = System.lineSeparator() + name + " | " + LocalDate.now() + " | " + (end - start) + " | " + counter;
+
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(leaderBoard, true));
+            if (leaderBoard.length() == 0L) {
+                writer.append(title);
+            }
+            writer.append(score);
+            writer.close();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
