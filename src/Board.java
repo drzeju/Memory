@@ -7,16 +7,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+
 public class Board extends JFrame {
     private List<Word> words;
-    private Word pickedWord;
     private Word word1;
     private Word word2;
     int pairs = 4;
     int rows = 2;
     int columns = 4;
     int tries = 10;
-    int counter;
     boolean isChosen = false;
     List<String> allWords;
     Container frame = getContentPane();
@@ -52,15 +51,20 @@ public class Board extends JFrame {
     }
 
 
-    private void checkWords() {
+    private void checkWords() throws IOException {
+        tries--;
         if (word1.getWord().equals(word2.getWord())) {
             word1.setEnabled(false);
             word2.setEnabled(false);
             word1.setMatch(true);
             word2.setMatch(true);
             if (this.isWon()) {
-                JOptionPane.showMessageDialog(this, "You have won!");
-                //TODO: Restarting game
+                int confirmDialog = JOptionPane.showConfirmDialog(this, "You have won! \nRestart game?", "Restart", JOptionPane.YES_NO_OPTION);
+                if (confirmDialog == JOptionPane.YES_OPTION) {
+                    restartGame();
+                } else {
+                    System.exit(0);
+                }
             }
         } else {
             word1.setText("");
@@ -68,6 +72,8 @@ public class Board extends JFrame {
         }
         word1 = null;
         word2 = null;
+        isLost();
+        setTitle("Chances left: " + tries);
     }
 
 
@@ -78,6 +84,17 @@ public class Board extends JFrame {
             }
         }
         return true;
+    }
+
+    private void isLost() {
+        if (tries == 0 && !isWon()) {
+            int confirmDialog = JOptionPane.showConfirmDialog(this, "You have lost! \nRestart game?", "Restart", JOptionPane.YES_NO_OPTION);
+            if (confirmDialog == JOptionPane.YES_OPTION) {
+                restartGame();
+            } else {
+                System.exit(0);
+            }
+        }
     }
 
 
@@ -141,7 +158,13 @@ public class Board extends JFrame {
         }
         this.words = wordList;
 
-        timer = new Timer(780, e -> checkWords());
+        timer = new Timer(780, e -> {
+            try {
+                checkWords();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
 
         timer.setRepeats(false);
 
@@ -149,6 +172,15 @@ public class Board extends JFrame {
         for (Word word : words) {
             frame.add(word);
         }
-        setTitle("Memory");
+
+        setTitle("Chances left: " + tries);
+    }
+
+    public void restartGame() {
+        Collections.shuffle(allWords);
+        frame.removeAll();
+        frame.revalidate();
+        frame.repaint();
+        chooseDifficulty();
     }
 }

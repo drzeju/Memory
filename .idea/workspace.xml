@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="405ca87e-10a3-46b2-a418-b140247ecc6e" name="Changes" comment="Added chooseDifficulty and setBoard method&#10;Created resource directory&#10;Implemented reading from file">
+    <list default="true" id="405ca87e-10a3-46b2-a418-b140247ecc6e" name="Changes" comment="Added checkWords method&#10;Make some minor changes in chooseDifficulty method&#10;Make some minor changes in setBoard method">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Word.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Word.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +59,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1660133596213</updated>
-      <workItem from="1660133598108" duration="18110000" />
+      <workItem from="1660133598108" duration="25215000" />
     </task>
     <task id="LOCAL-00001" summary="Set up project, created Word class">
       <created>1660135793943</created>
@@ -76,7 +75,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660141603880</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added checkWords method&#10;Make some minor changes in chooseDifficulty method&#10;Make some minor changes in setBoard method">
+      <created>1660225962793</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1660225962793</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -96,6 +102,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Set up project, created Word class" />
     <MESSAGE value="Added chooseDifficulty and setBoard method&#10;Created resource directory&#10;Implemented reading from file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added chooseDifficulty and setBoard method&#10;Created resource directory&#10;Implemented reading from file" />
+    <MESSAGE value="Added checkWords method&#10;Make some minor changes in chooseDifficulty method&#10;Make some minor changes in setBoard method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added checkWords method&#10;Make some minor changes in chooseDifficulty method&#10;Make some minor changes in setBoard method" />
   </component>
 </project>
