@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,10 +14,15 @@ public class Board extends JFrame {
     int rows = 2;
     int columns = 4;
     int tries = 10;
-    boolean isChosen = false;
     List<String> allWords;
     Container frame = getContentPane();
     Timer timer;
+    long start;
+    long end;
+    int counter = 0;
+
+
+
 
     public Board() throws IOException {
 
@@ -35,7 +38,6 @@ public class Board extends JFrame {
 
         setTitle("Choose Difficulty: ");
         chooseDifficulty();
-
     }
 
 
@@ -52,6 +54,7 @@ public class Board extends JFrame {
 
 
     private void checkWords() throws IOException {
+        counter++;
         tries--;
         if (word1.getWord().equals(word2.getWord())) {
             word1.setEnabled(false);
@@ -59,7 +62,9 @@ public class Board extends JFrame {
             word1.setMatch(true);
             word2.setMatch(true);
             if (this.isWon()) {
-                int confirmDialog = JOptionPane.showConfirmDialog(this, "You have won! \nRestart game?", "Restart", JOptionPane.YES_NO_OPTION);
+                end = System.currentTimeMillis() / 1000;
+                String msg = String.format("You have won! \nIt took you %d tries and %d sec. \nRestart game?",counter, end - start);
+                int confirmDialog = JOptionPane.showConfirmDialog(this, msg, "Restart", JOptionPane.YES_NO_OPTION);
                 if (confirmDialog == JOptionPane.YES_OPTION) {
                     restartGame();
                 } else {
@@ -86,9 +91,12 @@ public class Board extends JFrame {
         return true;
     }
 
+
     private void isLost() {
         if (tries == 0 && !isWon()) {
-            int confirmDialog = JOptionPane.showConfirmDialog(this, "You have lost! \nRestart game?", "Restart", JOptionPane.YES_NO_OPTION);
+            end = System.currentTimeMillis() / 1000;
+            String msg = String.format("You have lost! \nIt took you %d tries and %d sec. \nRestart game?",counter, end - start);
+            int confirmDialog = JOptionPane.showConfirmDialog(this, msg, "Restart", JOptionPane.YES_NO_OPTION);
             if (confirmDialog == JOptionPane.YES_OPTION) {
                 restartGame();
             } else {
@@ -107,7 +115,6 @@ public class Board extends JFrame {
             rows = 2;
             columns = 4;
             tries = 10;
-            isChosen = true;
             try {
                 setBoard();
             } catch (IOException ex) {
@@ -121,14 +128,12 @@ public class Board extends JFrame {
             rows = 4;
             columns = 4;
             tries = 15;
-            isChosen = true;
             try {
                 setBoard();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
         });
-
         frame.setLayout(new GridLayout());
         frame.add(easy);
         frame.add(hard);
@@ -158,7 +163,7 @@ public class Board extends JFrame {
         }
         this.words = wordList;
 
-        timer = new Timer(780, e -> {
+        timer = new Timer(500, e -> {
             try {
                 checkWords();
             } catch (IOException ex) {
@@ -172,15 +177,17 @@ public class Board extends JFrame {
         for (Word word : words) {
             frame.add(word);
         }
-
+        start = System.currentTimeMillis() / 1000;
         setTitle("Chances left: " + tries);
     }
+
 
     public void restartGame() {
         Collections.shuffle(allWords);
         frame.removeAll();
         frame.revalidate();
         frame.repaint();
+        counter = 0;
         chooseDifficulty();
     }
 }
