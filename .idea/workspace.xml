@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="405ca87e-10a3-46b2-a418-b140247ecc6e" name="Changes" comment="Added start, end and counter variable&#10;Added information about time and tries to confirm window">
+    <list default="true" id="405ca87e-10a3-46b2-a418-b140247ecc6e" name="Changes" comment="Added input dialog after winning game&#10;created method saveScore to create leaderboard file if it doesn't exist&#10;and add new score value to it.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
     </list>
@@ -58,7 +58,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1660133596213</updated>
-      <workItem from="1660133598108" duration="32582000" />
+      <workItem from="1660133598108" duration="37054000" />
     </task>
     <task id="LOCAL-00001" summary="Set up project, created Word class">
       <created>1660135793943</created>
@@ -102,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660293134954</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added input dialog after winning game&#10;created method saveScore to create leaderboard file if it doesn't exist&#10;and add new score value to it.">
+      <created>1660300453122</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1660300453122</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,6 +132,7 @@
     <MESSAGE value="Added checkWords method&#10;Make some minor changes in chooseDifficulty method&#10;Make some minor changes in setBoard method" />
     <MESSAGE value="Added isLost method&#10;Added restartGame method &#10;Modified checkWords -&gt; added option to restart game" />
     <MESSAGE value="Added start, end and counter variable&#10;Added information about time and tries to confirm window" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added start, end and counter variable&#10;Added information about time and tries to confirm window" />
+    <MESSAGE value="Added input dialog after winning game&#10;created method saveScore to create leaderboard file if it doesn't exist&#10;and add new score value to it." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added input dialog after winning game&#10;created method saveScore to create leaderboard file if it doesn't exist&#10;and add new score value to it." />
   </component>
 </project>

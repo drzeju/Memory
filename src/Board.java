@@ -24,8 +24,6 @@ public class Board extends JFrame {
     String name;
 
 
-
-
     public Board() throws IOException {
 
         allWords = new ArrayList<>();
@@ -65,11 +63,14 @@ public class Board extends JFrame {
             word2.setMatch(true);
             if (this.isWon()) {
                 end = System.currentTimeMillis() / 1000;
-                name = JOptionPane.showInputDialog("Please enter your name:");
-                saveScore();
+                int scoreConfirmDialog = JOptionPane.showConfirmDialog(this, "Would you like to save your score?","Leader Board", JOptionPane.YES_NO_OPTION);
+                if (scoreConfirmDialog == JOptionPane.YES_OPTION) {
+                    name = JOptionPane.showInputDialog("Please enter your name:", JOptionPane.YES_OPTION);
+                    saveScore();
+                }
                 String msg = String.format("You have won! \nIt took you %d tries and %d sec. \nRestart game?",counter, end - start);
-                int confirmDialog = JOptionPane.showConfirmDialog(this, msg, "Restart", JOptionPane.YES_NO_OPTION);
-                if (confirmDialog == JOptionPane.YES_OPTION) {
+                int restartConfirmDialog = JOptionPane.showConfirmDialog(this, msg, "Restart", JOptionPane.YES_NO_OPTION);
+                if (restartConfirmDialog == JOptionPane.YES_OPTION) {
                     restartGame();
                 } else {
                     System.exit(0);
